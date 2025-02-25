@@ -24,8 +24,8 @@ With `lazy.nvim`:
 
 ## Configuration
 
+<details>Default Configuration</details>
 <summary>
-	<details>Default Configuration</details>
 
 ```lua
 opts = {
