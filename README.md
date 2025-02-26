@@ -10,14 +10,14 @@ With `lazy.nvim`:
 {
 	"vi013t/tabs.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" }, -- optional
+	event = "VeryLazy", -- important for not messing up highlights
 	opts = {},
-	event = "VeryLazy",
 
 	-- example keymaps
 	init = function()
 		vim.keymap.set("n", "<C-S-L>", require("tabs").next)
 		vim.keymap.set("n", "<C-S-H>", require("tabs").previous)
-		vim.keymap.set("n", "<C-S-CR>", require("tabs").select)
+		vim.keymap.set("n", "<C-S-CR>", require("tabs").open)
 	end
 }
 ```
@@ -43,7 +43,11 @@ opts = {
 
 		-- Neo-tree
 		{
+			--- The filetype to look for for this offset
 			filetype = "neo-tree",
+
+			--- The title of this offset. It can be a string or a function that returns a string.
+			--- It will be centered in the offset, and truncated with ellipsis if it's too long.
 			title = function()
 				local has_devicons = pcall(require, "nvim-web-devicons")
 				if has_devicons then
